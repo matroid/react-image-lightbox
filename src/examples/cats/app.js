@@ -142,6 +142,7 @@ class App extends Component {
 
                     imageTitle={titles[this.state.index]}
                     imageCaption={captions[this.state.index]}
+                    enableZoom={true}
                     wrapperComponent={imageSrc => (
                       <div style={{ width: '100%', height: '100%' }}>
                         <img

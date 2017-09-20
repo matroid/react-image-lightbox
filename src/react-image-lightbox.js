@@ -1378,11 +1378,13 @@ class ReactImageLightbox extends Component {
         addImage(
             'mainSrc',
             'ril-image-current',
+            this.props.enableZoom ?
             ReactImageLightbox.getTransform({
                 x: -1 * offsetX,
                 y: -1 * offsetY,
                 zoom: zoomMultiplier,
             })
+            : {}
         );
         // Previous Image (displayed on the left)
         addImage(
