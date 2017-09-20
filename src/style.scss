@@ -46,6 +46,7 @@ $maxCaptionHeight: 150px;
     -ms-user-select: none;
     -ms-touch-select: none;
     touch-action: none;
+    transition: all .3s;
 }
 
 .imagePrev {

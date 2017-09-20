@@ -1239,6 +1239,7 @@ class ReactImageLightbox extends Component {
             toolbarButtons,
             reactModalStyle,
             onAfterOpen,
+            wrapperComponent
         } = this.props;
         const {
             zoomLevel,
@@ -1340,17 +1341,28 @@ class ReactImageLightbox extends Component {
                 );
             } else {
                 images.push(
-                    <img
-                        className={`${imageClass} ${styles.image}`}
-                        onDoubleClick={this.handleImageDoubleClick}
-                        onWheel={this.handleImageMouseWheel}
-                        onDragStart={e => e.preventDefault()}
-                        style={imageStyle}
-                        src={imageSrc}
-                        key={imageSrc + keyEndings[srcType]}
-                        alt={(typeof imageTitle === 'string' ? imageTitle : translate('Image'))}
-                        draggable={false}
-                    />
+                  <div
+                    className={`${imageClass} ${styles.image}`}
+                    onDoubleClick={this.handleImageDoubleClick}
+                    onWheel={this.handleImageMouseWheel}
+                    key={imageSrc + keyEndings[srcType]}
+                    style={imageStyle}
+                  >
+                    {
+                      wrapperComponent
+                      ? wrapperComponent(imageSrc)
+                      : <img
+                          onDragStart={e => e.preventDefault()}
+                          src={imageSrc}
+                          alt={(typeof imageTitle === 'string' ? imageTitle : translate('Image'))}
+                          draggable={false}
+                          style={{ width: '100%', height: '100%'}}
+
+                      />
+                    }
+
+                  </div>
+
                 );
             }
         };
@@ -1678,6 +1690,8 @@ ReactImageLightbox.propTypes = {
 
     wrapperClassName: PropTypes.string,
 
+    // a function that accepts the image string
+    wrapperComponent: PropTypes.func,
     //-----------------------------
     // Other
     //-----------------------------
@@ -1719,7 +1733,7 @@ ReactImageLightbox.defaultProps = {
     clickOutsideToClose: true,
     enableZoom:          true,
     wrapperClassName:    '',
-
+    wrapperComponent: null,
     nextLabel: 'Next image',
     prevLabel: 'Previous image',
     zoomInLabel: 'Zoom in',

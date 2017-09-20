@@ -142,6 +142,16 @@ class App extends Component {
 
                     imageTitle={titles[this.state.index]}
                     imageCaption={captions[this.state.index]}
+                    wrapperComponent={imageSrc => (
+                      <div style={{ width: '100%', height: '100%' }}>
+                        <img
+                          onDragStart={e => e.preventDefault()}
+                          src={imageSrc}
+                          draggable={false}
+                          style={{ width: '100%', height: '100%'}}
+                        />
+                      </div>
+                    )}
                 />
             );
         }
