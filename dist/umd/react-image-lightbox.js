@@ -1022,11 +1022,11 @@
                     addImage("nextSrc", "ril-image-next " + styles.imageNext, ReactImageLightbox.getTransform({
                         x: boxSize.width
                     })), // Main Image
-                    addImage("mainSrc", "ril-image-current", ReactImageLightbox.getTransform({
+                    addImage("mainSrc", "ril-image-current", this.props.enableZoom ? ReactImageLightbox.getTransform({
                         x: -1 * offsetX,
                         y: -1 * offsetY,
                         zoom: zoomMultiplier
-                    })), // Previous Image (displayed on the left)
+                    }) : {}), // Previous Image (displayed on the left)
                     addImage("prevSrc", "ril-image-prev " + styles.imagePrev, ReactImageLightbox.getTransform({
                         x: -1 * boxSize.width
                     }));
