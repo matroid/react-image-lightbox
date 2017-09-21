@@ -1484,7 +1484,7 @@ class ReactImageLightbox extends Component {
                     </div>
 
                     {prevSrc &&
-                        <button // Move to previous image button
+                        <div // Move to previous image button
                             type="button"
                             className={`ril-prev-button ${styles.navButtons} ${styles.navButtonPrev}`}
                             key="prev"
@@ -1494,7 +1494,7 @@ class ReactImageLightbox extends Component {
                     }
 
                     {nextSrc &&
-                        <button // Move to next image button
+                        <div // Move to next image button
                             type="button"
                             className={`ril-next-button ${styles.navButtons} ${styles.navButtonNext}`}
                             key="next"
