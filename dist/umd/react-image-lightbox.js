@@ -1089,14 +1089,14 @@
                         // Image holder
                         className: "ril-inner " + styles.inner,
                         onClick: clickOutsideToClose ? this.closeIfClickInner : noop
-                    }, images), prevSrc && _react2.default.createElement("button", {
+                    }, images), prevSrc && _react2.default.createElement("div", {
                         // Move to previous image button
                         type: "button",
                         className: "ril-prev-button " + styles.navButtons + " " + styles.navButtonPrev,
                         key: "prev",
                         "aria-label": this.props.prevLabel,
                         onClick: this.isAnimating() ? noop : this.requestMovePrev
-                    }), nextSrc && _react2.default.createElement("button", {
+                    }), nextSrc && _react2.default.createElement("div", {
                         // Move to next image button
                         type: "button",
                         className: "ril-next-button " + styles.navButtons + " " + styles.navButtonNext,
