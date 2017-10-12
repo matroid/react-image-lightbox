@@ -1197,7 +1197,7 @@ class ReactImageLightbox extends Component {
     }
 
     getSrcKey(srcType) {
-      switch () {
+      switch (srcType) {
         case 'mainSrc':
           return this.props.mainKey;
         case 'prevSrc':
