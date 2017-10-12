@@ -210,7 +210,8 @@
                 _this.handleCaptionMousewheel = _this.handleCaptionMousewheel.bind(_this), _this.handleWindowResize = _this.handleWindowResize.bind(_this), 
                 _this.handleZoomInButtonClick = _this.handleZoomInButtonClick.bind(_this), _this.handleZoomOutButtonClick = _this.handleZoomOutButtonClick.bind(_this), 
                 _this.requestClose = _this.requestClose.bind(_this), _this.requestMoveNext = _this.requestMoveNext.bind(_this), 
-                _this.requestMovePrev = _this.requestMovePrev.bind(_this), _this;
+                _this.requestMovePrev = _this.requestMovePrev.bind(_this), _this.getSrcKey = _this.getSrcKey.bind(_this), 
+                _this;
             }
             return _inherits(ReactImageLightbox, _Component), _createClass(ReactImageLightbox, [ {
                 key: "componentWillMount",
@@ -928,6 +929,20 @@
                     this.requestMove("prev", event);
                 }
             }, {
+                key: "getSrcKey",
+                value: function(srcType) {
+                    switch (srcType) {
+                      case "mainSrc":
+                        return this.props.mainKey;
+
+                      case "prevSrc":
+                        return this.props.prevKey;
+
+                      case "nextSrc":
+                        return this.props.nextKey;
+                    }
+                }
+            }, {
                 key: "render",
                 value: function() {
                     var _this14 = this, _props = this.props, animationDisabled = _props.animationDisabled, animationDuration = _props.animationDuration, clickOutsideToClose = _props.clickOutsideToClose, discourageDownloads = _props.discourageDownloads, enableZoom = _props.enableZoom, imageTitle = _props.imageTitle, nextSrc = _props.nextSrc, prevSrc = _props.prevSrc, toolbarButtons = _props.toolbarButtons, reactModalStyle = _props.reactModalStyle, _onAfterOpen = _props.onAfterOpen, wrapperComponent = _props.wrapperComponent, _state = this.state, zoomLevel = _state.zoomLevel, offsetX = _state.offsetX, offsetY = _state.offsetY, isClosing = _state.isClosing, boxSize = this.getLightboxRect(), transitionStyle = {};
@@ -948,7 +963,7 @@
                         if (_this14.props[srcType]) {
                             var imageStyle = _extends({}, baseStyle, transitionStyle);
                             zoomLevel > _constant.MIN_ZOOM_LEVEL && (imageStyle.cursor = "move");
-                            var bestImageInfo = _this14.getBestImageForType(srcType);
+                            var bestImageInfo = _this14.getBestImageForType(srcType), imageKey = _this14.getSrcKey(srcType);
                             if (null === bestImageInfo) {
                                 var loadingIcon = void 0;
                                 // Fall back to loading icon if the thumbnail has not been loaded
@@ -983,7 +998,7 @@
                                 })), void images.push(_react2.default.createElement("div", {
                                     className: imageClass + " " + styles.image + " ril-not-loaded",
                                     style: imageStyle,
-                                    key: _this14.props[srcType] + keyEndings[srcType]
+                                    key: imageKey || _this14.props[srcType] + keyEndings[srcType]
                                 }, _react2.default.createElement("div", {
                                     className: styles.loadingContainer
                                 }, loadingIcon)));
@@ -995,16 +1010,16 @@
                                 onDoubleClick: _this14.handleImageDoubleClick,
                                 onWheel: _this14.handleImageMouseWheel,
                                 style: imageStyle,
-                                key: imageSrc + keyEndings[srcType]
+                                key: imageKey || imageSrc + keyEndings[srcType]
                             }, _react2.default.createElement("div", {
                                 className: "ril-download-blocker " + styles.downloadBlocker
                             })))) : images.push(_react2.default.createElement("div", {
                                 className: imageClass + " " + styles.image,
                                 onDoubleClick: _this14.handleImageDoubleClick,
                                 onWheel: _this14.handleImageMouseWheel,
-                                key: imageSrc + keyEndings[srcType],
+                                key: imageKey || imageSrc + keyEndings[srcType],
                                 style: imageStyle
-                            }, wrapperComponent ? wrapperComponent(imageSrc) : _react2.default.createElement("img", {
+                            }, wrapperComponent ? wrapperComponent(imageKey || imageSrc) : _react2.default.createElement("img", {
                                 onDragStart: function(e) {
                                     return e.preventDefault();
                                 },
