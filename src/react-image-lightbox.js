@@ -1324,7 +1324,7 @@ class ReactImageLightbox extends Component {
                     <div
                         className={`${imageClass} ${styles.image} ril-not-loaded`}
                         style={imageStyle}
-                        key={(imageKey || this.props[srcType]) + keyEndings[srcType]}
+                        key={imageKey || (this.props[srcType] + keyEndings[srcType])}
                     >
                         <div className={styles.loadingContainer} >
                             {loadingIcon}
@@ -1347,7 +1347,7 @@ class ReactImageLightbox extends Component {
                         onDoubleClick={this.handleImageDoubleClick}
                         onWheel={this.handleImageMouseWheel}
                         style={imageStyle}
-                        key={(imageKey || imageSrc) + keyEndings[srcType]}
+                        key={imageKey || (imageSrc + keyEndings[srcType])}
                     >
                         <div className={`ril-download-blocker ${styles.downloadBlocker}`} />
                     </div>
@@ -1358,7 +1358,7 @@ class ReactImageLightbox extends Component {
                     className={`${imageClass} ${styles.image}`}
                     onDoubleClick={this.handleImageDoubleClick}
                     onWheel={this.handleImageMouseWheel}
-                    key={(imageKey || imageSrc) + keyEndings[srcType]}
+                    key={imageKey || (imageSrc + keyEndings[srcType])}
                     style={imageStyle}
                   >
                     {
