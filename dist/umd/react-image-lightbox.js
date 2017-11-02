@@ -998,7 +998,7 @@
                                 })), void images.push(_react2.default.createElement("div", {
                                     className: imageClass + " " + styles.image + " ril-not-loaded",
                                     style: imageStyle,
-                                    key: (imageKey || _this14.props[srcType]) + keyEndings[srcType]
+                                    key: imageKey || _this14.props[srcType] + keyEndings[srcType]
                                 }, _react2.default.createElement("div", {
                                     className: styles.loadingContainer
                                 }, loadingIcon)));
@@ -1010,14 +1010,14 @@
                                 onDoubleClick: _this14.handleImageDoubleClick,
                                 onWheel: _this14.handleImageMouseWheel,
                                 style: imageStyle,
-                                key: (imageKey || imageSrc) + keyEndings[srcType]
+                                key: imageKey || imageSrc + keyEndings[srcType]
                             }, _react2.default.createElement("div", {
                                 className: "ril-download-blocker " + styles.downloadBlocker
                             })))) : images.push(_react2.default.createElement("div", {
                                 className: imageClass + " " + styles.image,
                                 onDoubleClick: _this14.handleImageDoubleClick,
                                 onWheel: _this14.handleImageMouseWheel,
-                                key: (imageKey || imageSrc) + keyEndings[srcType],
+                                key: imageKey || imageSrc + keyEndings[srcType],
                                 style: imageStyle
                             }, wrapperComponent ? wrapperComponent(imageKey || imageSrc) : _react2.default.createElement("img", {
                                 onDragStart: function(e) {
