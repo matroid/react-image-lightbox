@@ -504,7 +504,7 @@
                 value: function(event) {
                     var _this5 = this;
                     // Prevent scrolling of the background
-                    event.preventDefault(), event.stopPropagation();
+                    event.stopPropagation();
                     var xThreshold = _constant.WHEEL_MOVE_X_THRESHOLD, actionDelay = 0, imageMoveDelay = 500;
                     // Prevent rapid-fire zoom behavior
                     if (this.clearTimeout(this.resetScrollTimeout), this.resetScrollTimeout = this.setTimeout(function() {
@@ -528,7 +528,6 @@
             }, {
                 key: "handleImageMouseWheel",
                 value: function(event) {
-                    event.preventDefault();
                     var yThreshold = _constant.WHEEL_MOVE_Y_THRESHOLD;
                     if (Math.abs(event.deltaY) >= Math.abs(event.deltaX)) {
                         // If the vertical scroll amount was large enough, perform a zoom
