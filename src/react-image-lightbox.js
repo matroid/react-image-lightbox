@@ -1466,6 +1466,9 @@ class ReactImageLightbox extends Component {
                 }}
                 style={modalStyle}
                 contentLabel={translate('Lightbox')}
+		appElement={
+			typeof window !== 'undefined' ? window.document.body : undefined
+		}
             >
                 <div // eslint-disable-line jsx-a11y/no-static-element-interactions
                     // Floating modal with closing animations
